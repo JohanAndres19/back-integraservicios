@@ -4,17 +4,18 @@ import 'controllers/controlers.dart' as controllers;
 
 AngelConfigurer configureServer(FileSystem fileSystem) {
   return (Angel app) async {
-
     await app.configure(controllers.configureServer);
-    /* app.get('/int:number', (req, res) async {
-      //await req.parseBody();
- 
-      res.json({
-        "name": [1, 2, 3, 4, 5, req.params["number"]],
-        "prueba": "johanannan"
-      });
-    });
- */
+   
     app.fallback((req, res) => throw AngelHttpException.notFound());
   };
 }
+
+
+/** 
+ * EndPoint--->"Resources"
+ * Recursos 
+ * Reservas 
+ * Prestamos
+ * Devoluciones 
+ * Servicios
+*/
