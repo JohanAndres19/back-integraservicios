@@ -27,6 +27,6 @@ RUN dart pub upgrade
 
 ENV ANGEL_ENV=production
 EXPOSE 3000
-CMD dart  ./bin/prod.dart 
+CMD dart  ./bin/prod.dart -p 3000 -a 0.0.0.0
 
 
