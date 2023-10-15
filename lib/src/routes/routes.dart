@@ -5,7 +5,7 @@ import 'controllers/controlers.dart' as controllers;
 AngelConfigurer configureServer(FileSystem fileSystem) {
   return (Angel app) async {
     await app.configure(controllers.configureServer);
-   
+    app.get('/', (req, res) => res.write("hola mundo"));
     app.fallback((req, res) => throw AngelHttpException.notFound());
   };
 }
