@@ -1,5 +1,4 @@
 import 'package:angel3_framework/angel3_framework.dart';
-import 'package:hello_angel/src/models/user.dart';
 import 'package:postgres/postgres.dart';
 
 
