@@ -1,4 +1,6 @@
 import 'package:angel3_framework/angel3_framework.dart';
+import 'package:hello_angel/src/models/user.dart';
+import 'package:postgres/postgres.dart';
 
 
 
@@ -10,8 +12,22 @@ class Login extends Controller {
     
     await req.parseBody();
     
-    print(req.bodyAsMap['user']);
+    final conn = req.container?.make<PostgreSQLConnection>();
 
-    res.json({"name":"Johan","codigo":"20181020072"});
+    final results = await conn?.mappedResultsQuery('SELECT * FROM usuario');
+
+    results?.forEach((element) {
+      element['usuario']?.addAll({
+        'created_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toIso8601String(),
+      });
+      print(element['usuario']);
+      //var usuario= UserSerializer.fromMap(element['usuario']!);
+    });
+    //final resultado=results?.asMap();
+    res.headers['Content-Type'] = 'application/json';
+    res.headers['encoding'] = 'utf-8';
+    res.json({"data":results});
+    
   }
 }
