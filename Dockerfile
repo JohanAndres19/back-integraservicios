@@ -1,10 +1,10 @@
-FROM  ubuntu
+FROM  ubuntu:22.04
 
 # Instalacion de Dart
 RUN apt-get update 
 RUN apt-get upgrade
 RUN apt-get install -y wget
-#RUN apt-get install -y gnupg
+RUN apt-get install -y gnupg
 
 RUN apt-get install apt-transport-https 
 RUN wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub |  gpg --dearmor -o /usr/share/keyrings/dart.gpg 
