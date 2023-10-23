@@ -14,7 +14,7 @@ Future configureServer(Angel app) async {
       useSSL: true,
       encoding: Encoding.getByName('utf8'),
     );
-    await connection.open();
+    //await connection.open();
     app.container.registerSingleton<PostgreSQLConnection>(connection); 
   } catch (e) {
     print("error en conexión a la base de datos");

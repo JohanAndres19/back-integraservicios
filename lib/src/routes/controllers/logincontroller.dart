@@ -12,7 +12,7 @@ class Login extends Controller {
     await req.parseBody();
     
     final conn = req.container?.make<PostgreSQLConnection>();
-
+    await conn?.open();
     final results = await conn?.mappedResultsQuery('SELECT * FROM usuario');
 
     results?.forEach((element) {
