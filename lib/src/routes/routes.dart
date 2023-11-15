@@ -12,10 +12,10 @@ AngelConfigurer configureServer(FileSystem fileSystem) {
 
 
 /** 
- * EndPoint--->"Resources"
- * Recursos 
- * Reservas 
- * Prestamos
- * Devoluciones 
- * Servicios
+ * EndPoint -->"Resources"
+ * Recursos --> resources *
+ * Reservas --> bookings  *
+ * Prestamos --> loans *
+ * Devoluciones  --> returns *
+ * Servicios ?
 */

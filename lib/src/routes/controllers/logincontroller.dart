@@ -15,18 +15,10 @@ class Login extends Controller {
     await conn?.open();
     final results = await conn?.mappedResultsQuery('SELECT * FROM usuario');
 
-    results?.forEach((element) {
-      element['usuario']?.addAll({
-        'created_at': DateTime.now().toIso8601String(),
-        'updated_at': DateTime.now().toIso8601String(),
-      });
-      print(element['usuario']);
-      //var usuario= UserSerializer.fromMap(element['usuario']!);
-    });
     //final resultado=results?.asMap();
     res.headers['Content-Type'] = 'application/json';
     res.headers['encoding'] = 'utf-8';
     res.json({"data":results});
-    
+    await conn?.close();
   }
 }

@@ -1,0 +1,1670 @@
+{
+  "canvas": {
+    "version": "2.2.11",
+    "width": 3000,
+    "height": 3000,
+    "scrollTop": -419,
+    "scrollLeft": -941,
+    "zoomLevel": 1,
+    "show": {
+      "tableComment": true,
+      "columnComment": true,
+      "columnDataType": true,
+      "columnDefault": true,
+      "columnAutoIncrement": false,
+      "columnPrimaryKey": true,
+      "columnUnique": false,
+      "columnNotNull": true,
+      "relationship": true
+    },
+    "database": "PostgreSQL",
+    "databaseName": "IntegraServicio",
+    "canvasType": "ERD",
+    "language": "GraphQL",
+    "tableCase": "pascalCase",
+    "columnCase": "camelCase",
+    "highlightTheme": "VS2015",
+    "bracketType": "none",
+    "setting": {
+      "relationshipDataTypeSync": true,
+      "relationshipOptimization": false,
+      "columnOrder": [
+        "columnName",
+        "columnDataType",
+        "columnNotNull",
+        "columnUnique",
+        "columnAutoIncrement",
+        "columnDefault",
+        "columnComment"
+      ]
+    },
+    "pluginSerializationMap": {}
+  },
+  "table": {
+    "tables": [
+      {
+        "name": "Usuario",
+        "comment": "",
+        "columns": [
+          {
+            "name": "IdUsuario",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "79d22c3a-d5aa-4233-8701-5e5bbd9f94a7"
+          },
+          {
+            "name": "Nombre",
+            "comment": "",
+            "dataType": "varchar(30)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "cc9b65d9-0922-4c1b-93ca-fa9b1869795e"
+          },
+          {
+            "name": "Apellido",
+            "comment": "",
+            "dataType": "varchar(30)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "6011d11a-814c-418f-9b26-4d6a5cda3666"
+          },
+          {
+            "name": "correo",
+            "comment": "",
+            "dataType": "varchar(60)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "32236d8c-42c1-42d5-96e4-86c6856cd497"
+          },
+          {
+            "name": "contraseña",
+            "comment": "",
+            "dataType": "varchar(255)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 66.32080078125,
+              "widthComment": 60,
+              "widthDataType": 75.6962890625,
+              "widthDefault": 60
+            },
+            "id": "50256548-cd06-4ac6-97fd-942fd26164c1"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 2600.983,
+          "top": 2633.9495,
+          "zIndex": 6,
+          "widthName": 60,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "6b34a3a9-7cde-4ada-94fd-8eee3c4a96e1"
+      },
+      {
+        "name": "Recurso",
+        "comment": "",
+        "columns": [
+          {
+            "name": "IdRecurso",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 61.2490234375,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "0827091c-17d8-4849-bcdb-0370a717cc3e"
+          },
+          {
+            "name": "IdTipoRecursoPKFK",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": true,
+              "widthName": 120.00927734375,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "bde18038-3a3f-420e-be49-21f5e9a85473"
+          },
+          {
+            "name": "Descripcion",
+            "comment": "",
+            "dataType": "varchar(50)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 69.91357421875,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "e1b8c0ba-7020-4ecb-836e-3872339b9f70"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 1232.1352,
+          "top": 1012.6467,
+          "zIndex": 1,
+          "widthName": 60,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "2a2c14a6-f0e6-4799-b569-654abc3ef437"
+      },
+      {
+        "name": "Reserva",
+        "comment": "",
+        "columns": [
+          {
+            "name": "IdReserva",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 61.2490234375,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "d73aebb7-ddf8-412a-a941-572c47515dcc"
+          },
+          {
+            "name": "IdUsuarioPKFK",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": true,
+              "widthName": 91.5908203125,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "87185816-18f2-43d1-ab26-0e12a783b56f"
+          },
+          {
+            "name": "IdRecursoPKFK",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": true,
+              "widthName": 95.20263671875,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "6e577ab1-ce99-4534-a9e1-26fe193250b4"
+          },
+          {
+            "name": "IdTipoRecursoPKFK",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": true,
+              "widthName": 120.00927734375,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "f89d1dee-cb70-4ad9-bfa2-28ffdb8e8b03"
+          },
+          {
+            "name": "IdEstado",
+            "comment": "",
+            "dataType": "varchar(20)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "1aad198f-dd8b-4d6f-b09d-fa6b6544d4be"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 1791.1216,
+          "top": 2030.307,
+          "zIndex": 9,
+          "widthName": 60,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "6f87b07f-1fa3-4b56-aac2-96bb18c862ba"
+      },
+      {
+        "name": "Tipo_Recurso",
+        "comment": "",
+        "columns": [
+          {
+            "name": "IdTipoRecurso",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 86.0556640625,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "3721d530-7228-40be-b3e3-67b7c0f66efc"
+          },
+          {
+            "name": "TiempoUso",
+            "comment": "",
+            "dataType": "time",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 67.98388671875,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "411f59f7-a0cb-4094-a0a6-3b5cfc4303a1"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 1285.8982,
+          "top": 675.7394,
+          "zIndex": 3,
+          "widthName": 82.44384765625,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "48d52250-d36e-4436-9250-aab0ab83c3b9"
+      },
+      {
+        "name": "Calendario",
+        "comment": "",
+        "columns": [
+          {
+            "name": "IdCalendario",
+            "comment": "",
+            "dataType": "varchar(80)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 75.71533203125,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "cc172763-0c6a-43ad-8a6b-a4c1a050f3ef"
+          },
+          {
+            "name": "FechaInicio",
+            "comment": "",
+            "dataType": "timestamp",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 68.47900390625,
+              "widthComment": 60,
+              "widthDataType": 61.9599609375,
+              "widthDefault": 60
+            },
+            "id": "d579c0fe-2013-4972-9837-a35b41375473"
+          },
+          {
+            "name": "FechaFinal",
+            "comment": "",
+            "dataType": "timestamp",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 66.30810546875,
+              "widthComment": 60,
+              "widthDataType": 61.9599609375,
+              "widthDefault": 60
+            },
+            "id": "43adc272-89e8-4590-90dc-7ed4ab69027c"
+          },
+          {
+            "name": "IdReservaPKFK",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 95.20263671875,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "8f026e45-07a3-4e1e-8041-e61023e87262"
+          },
+          {
+            "name": "IdUsuarioPKFK",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 91.5908203125,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "492cf7f4-618d-46eb-8f93-edec9c208ca8"
+          },
+          {
+            "name": "IdRecursoPKFK",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 95.20263671875,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "af15929e-af7c-437d-8eb2-4a1172444544"
+          },
+          {
+            "name": "IdTipoRecursoPKFK",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 120.00927734375,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "ec6e122a-1e3c-4073-950c-f7871d5a14e8"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 2301.4215,
+          "top": 1550.4757,
+          "zIndex": 8,
+          "widthName": 64.87353515625,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "5f02ae92-a063-4ff2-846e-f0e0063aca2f"
+      },
+      {
+        "name": "Empleado",
+        "comment": "",
+        "columns": [
+          {
+            "name": "IdEmpleado",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 71.3798828125,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "442ce36e-de60-4c2c-a405-a6dfe0de1863"
+          },
+          {
+            "name": "Nombre",
+            "comment": "",
+            "dataType": "varchar(30)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "c9a1a923-7d2c-4f73-b90c-cbca5ca7f8b1"
+          },
+          {
+            "name": "Apellido",
+            "comment": "",
+            "dataType": "varchar(30)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "d42eee97-e2e7-49c9-85cb-6a120a5b54a4"
+          },
+          {
+            "name": "correo",
+            "comment": "",
+            "dataType": "varchar(60)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "1e4acb4c-5081-4347-b764-ae2b0dc16bd7"
+          },
+          {
+            "name": "contraseña",
+            "comment": "",
+            "dataType": "varchar(255)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 66.32080078125,
+              "widthComment": 60,
+              "widthDataType": 75.6962890625,
+              "widthDefault": 60
+            },
+            "id": "41aa5d20-39b7-43eb-9e06-2732ef2185b4"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 114.9273,
+          "top": 241.8327,
+          "zIndex": 11,
+          "widthName": 60.5380859375,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "b23657b0-4fd2-480f-818b-4ef82d5cd73e"
+      },
+      {
+        "name": "Prestamo",
+        "comment": "",
+        "columns": [
+          {
+            "name": "IdPrestamo",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 68.47265625,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "a12e1b02-3601-4209-b176-7be52eb4bb45"
+          },
+          {
+            "name": "IdEmpleadoPKFK",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": true,
+              "widthName": 105.33349609375,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "4081d698-00e6-429e-bc89-55e55aebd754"
+          },
+          {
+            "name": "IdUsuarioPKFK",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": true,
+              "widthName": 91.5908203125,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "cc494897-dbe0-4745-9780-fc3a63cf80f0"
+          },
+          {
+            "name": "FechaPrestamo",
+            "comment": "",
+            "dataType": "timestamp",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 93.76171875,
+              "widthComment": 60,
+              "widthDataType": 61.9599609375,
+              "widthDefault": 60
+            },
+            "id": "91630dbf-e4e2-4275-83ef-acffba4f0039"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 2494.2084,
+          "top": 260.1504,
+          "zIndex": 10,
+          "widthName": 60,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "10907074-33e3-41ea-b3c2-cba56311ae62"
+      },
+      {
+        "name": "Devolucion",
+        "comment": "",
+        "columns": [
+          {
+            "name": "IdDevolucion",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 77.15625,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "25f47aeb-3d64-4a34-aa3c-e94c53cc6148"
+          },
+          {
+            "name": "IdUsuarioPKFK",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": true,
+              "widthName": 91.5908203125,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "e682b507-cb5b-4f28-b0e6-a8cfe6aefed9"
+          },
+          {
+            "name": "IdEmpleadoPKFK",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": true,
+              "widthName": 105.33349609375,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "ce59dbd4-5a4a-4aa5-a952-89e7a79804fe"
+          },
+          {
+            "name": "calificacion",
+            "comment": "",
+            "dataType": "numeric(2,1)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 65.58447265625,
+              "widthComment": 60,
+              "widthDataType": 74.96630859375,
+              "widthDefault": 60
+            },
+            "id": "61d366ed-7b50-4dfd-8b93-a912a207e8c5"
+          },
+          {
+            "name": "FechaDevolucion",
+            "comment": "",
+            "dataType": "timestamp",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 102.4453125,
+              "widthComment": 60,
+              "widthDataType": 61.9599609375,
+              "widthDefault": 60
+            },
+            "id": "904e19fc-bb4d-4d67-9958-d08904c7989c"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 84.1836,
+          "top": 2618.932,
+          "zIndex": 7,
+          "widthName": 66.314453125,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "dbbad3da-862b-4537-a05b-4b26bcada98e"
+      },
+      {
+        "name": "Estado",
+        "comment": "",
+        "columns": [
+          {
+            "name": "IdEstado",
+            "comment": "",
+            "dataType": "varchar(20)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "722734e9-c663-487a-a352-f8b056a5c3fe"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 909.7001,
+          "top": 2063.1565,
+          "zIndex": 2,
+          "widthName": 60,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "4cc710d1-b2ff-42f8-9f4d-859184910c93"
+      },
+      {
+        "name": "PrestamoRecurso",
+        "comment": "",
+        "columns": [
+          {
+            "name": "IdPrestamoPKFK",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": true,
+              "widthName": 102.42626953125,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "8a4c18d0-ff78-4a07-87b5-1a13b032559a"
+          },
+          {
+            "name": "IdEmpleadoPKFK",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": true,
+              "widthName": 105.33349609375,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "aa824647-a67a-485a-82f4-4386c38970fa"
+          },
+          {
+            "name": "IdUsuarioPKFK",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": true,
+              "widthName": 91.5908203125,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "4ed7afe7-ca47-4583-a1a7-233c7658841c"
+          },
+          {
+            "name": "IdRecursoPKFK",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": true,
+              "widthName": 95.20263671875,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "35efe43b-986e-475b-99b1-537ddd050205"
+          },
+          {
+            "name": "IdTipoRecursoPKFK",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": true,
+              "widthName": 120.00927734375,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "07616715-1801-4571-ab61-b3eeb3ec2081"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 2247.4487,
+          "top": 932.5276,
+          "zIndex": 5,
+          "widthName": 106.0380859375,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "35965100-281e-47ff-a1d2-68cbad5e30fd"
+      },
+      {
+        "name": "DevolucionRecurso",
+        "comment": "",
+        "columns": [
+          {
+            "name": "IdRecursoPKFK",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": true,
+              "widthName": 95.20263671875,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "bde735a5-da51-47ec-933e-a1858aaa9a5b"
+          },
+          {
+            "name": "IdTipoRecursoPKFK",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": true,
+              "widthName": 120.00927734375,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "12289ec3-5169-4def-a8e9-7f56b4a06189"
+          },
+          {
+            "name": "IdDevolucionPKFK",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": true,
+              "widthName": 111.10986328125,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "03ad5495-1dac-462c-96cf-a87a6dce6447"
+          },
+          {
+            "name": "IdEmpleadoPKFK",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": true,
+              "widthName": 105.33349609375,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "68a453a7-2d10-45b5-81ac-359666d63119"
+          },
+          {
+            "name": "IdUsuarioPKFK",
+            "comment": "",
+            "dataType": "varchar(40)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": true,
+              "widthName": 91.5908203125,
+              "widthComment": 60,
+              "widthDataType": 68.46630859375,
+              "widthDefault": 60
+            },
+            "id": "97ba9ec1-221a-4968-9269-3762845588ca"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 906.6662,
+          "top": 1591.6355,
+          "zIndex": 4,
+          "widthName": 114.7216796875,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "028844aa-bc2f-492c-a68c-3e8bfe794c61"
+      }
+    ],
+    "indexes": []
+  },
+  "memo": {
+    "memos": []
+  },
+  "relationship": {
+    "relationships": [
+      {
+        "identification": true,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "48d52250-d36e-4436-9250-aab0ab83c3b9",
+          "columnIds": [
+            "3721d530-7228-40be-b3e3-67b7c0f66efc"
+          ],
+          "x": 1476.659186328125,
+          "y": 785.7394,
+          "direction": "bottom"
+        },
+        "end": {
+          "tableId": "2a2c14a6-f0e6-4799-b569-654abc3ef437",
+          "columnIds": [
+            "bde18038-3a3f-420e-be49-21f5e9a85473"
+          ],
+          "x": 1439.87299296875,
+          "y": 1012.6467,
+          "direction": "top"
+        },
+        "constraintName": "fk_tipo_recurso_to_recurso",
+        "visible": true,
+        "id": "11a29ad3-d46d-4469-bf1b-a40ed0966810"
+      },
+      {
+        "identification": true,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "6b34a3a9-7cde-4ada-94fd-8eee3c4a96e1",
+          "columnIds": [
+            "79d22c3a-d5aa-4233-8701-5e5bbd9f94a7"
+          ],
+          "x": 2600.983,
+          "y": 2676.8245,
+          "direction": "left"
+        },
+        "end": {
+          "tableId": "6f87b07f-1fa3-4b56-aac2-96bb18c862ba",
+          "columnIds": [
+            "87185816-18f2-43d1-ab26-0e12a783b56f"
+          ],
+          "x": 2206.5971859375,
+          "y": 2158.932,
+          "direction": "right"
+        },
+        "constraintName": "fk_usuario_to_reserva",
+        "visible": true,
+        "id": "9b16d69e-2d34-42d4-9739-e84d6459dc84"
+      },
+      {
+        "identification": true,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "2a2c14a6-f0e6-4799-b569-654abc3ef437",
+          "columnIds": [
+            "0827091c-17d8-4849-bcdb-0370a717cc3e",
+            "bde18038-3a3f-420e-be49-21f5e9a85473"
+          ],
+          "x": 1647.6107859375,
+          "y": 1110.5217,
+          "direction": "right"
+        },
+        "end": {
+          "tableId": "6f87b07f-1fa3-4b56-aac2-96bb18c862ba",
+          "columnIds": [
+            "6e577ab1-ce99-4534-a9e1-26fe193250b4",
+            "f89d1dee-cb70-4ad9-bfa2-28ffdb8e8b03"
+          ],
+          "x": 1998.85939296875,
+          "y": 2030.307,
+          "direction": "top"
+        },
+        "constraintName": "fk_recurso_to_reserva",
+        "visible": true,
+        "id": "1bfe1e1f-08d8-47da-9208-c2fd774a1a69"
+      },
+      {
+        "identification": true,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "b23657b0-4fd2-480f-818b-4ef82d5cd73e",
+          "columnIds": [
+            "442ce36e-de60-4c2c-a405-a6dfe0de1863"
+          ],
+          "x": 489.003471875,
+          "y": 327.5827,
+          "direction": "right"
+        },
+        "end": {
+          "tableId": "10907074-33e3-41ea-b3c2-cba56311ae62",
+          "columnIds": [
+            "4081d698-00e6-429e-bc89-55e55aebd754"
+          ],
+          "x": 2494.2084,
+          "y": 335.6504,
+          "direction": "left"
+        },
+        "constraintName": "fk_empleado_to_prestamo",
+        "visible": true,
+        "id": "c4ed5966-bae0-4a0c-a089-d1fd81d3901e"
+      },
+      {
+        "identification": true,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "b23657b0-4fd2-480f-818b-4ef82d5cd73e",
+          "columnIds": [
+            "442ce36e-de60-4c2c-a405-a6dfe0de1863"
+          ],
+          "x": 301.9653859375,
+          "y": 413.3327,
+          "direction": "bottom"
+        },
+        "end": {
+          "tableId": "dbbad3da-862b-4537-a05b-4b26bcada98e",
+          "columnIds": [
+            "ce59dbd4-5a4a-4aa5-a952-89e7a79804fe"
+          ],
+          "x": 287.83350234375,
+          "y": 2618.932,
+          "direction": "top"
+        },
+        "constraintName": "fk_empleado_to_devolucion",
+        "visible": true,
+        "id": "828b314d-469c-40e9-8e8d-901cf2178b4c"
+      },
+      {
+        "identification": false,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "6f87b07f-1fa3-4b56-aac2-96bb18c862ba",
+          "columnIds": [
+            "d73aebb7-ddf8-412a-a941-572c47515dcc",
+            "87185816-18f2-43d1-ab26-0e12a783b56f",
+            "6e577ab1-ce99-4534-a9e1-26fe193250b4",
+            "f89d1dee-cb70-4ad9-bfa2-28ffdb8e8b03"
+          ],
+          "x": 2206.5971859375,
+          "y": 2073.182,
+          "direction": "right"
+        },
+        "end": {
+          "tableId": "5f02ae92-a063-4ff2-846e-f0e0063aca2f",
+          "columnIds": [
+            "8f026e45-07a3-4e1e-8041-e61023e87262",
+            "492cf7f4-618d-46eb-8f93-edec9c208ca8",
+            "af15929e-af7c-437d-8eb2-4a1172444544",
+            "ec6e122a-1e3c-4073-950c-f7871d5a14e8"
+          ],
+          "x": 2509.15929296875,
+          "y": 1762.9757,
+          "direction": "bottom"
+        },
+        "constraintName": "fk_reserva_to_calendario",
+        "visible": true,
+        "id": "39c16a3f-d53b-42c4-b460-0eb190a459d7"
+      },
+      {
+        "identification": true,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "6b34a3a9-7cde-4ada-94fd-8eee3c4a96e1",
+          "columnIds": [
+            "79d22c3a-d5aa-4233-8701-5e5bbd9f94a7"
+          ],
+          "x": 2785.491544921875,
+          "y": 2633.9495,
+          "direction": "top"
+        },
+        "end": {
+          "tableId": "10907074-33e3-41ea-b3c2-cba56311ae62",
+          "columnIds": [
+            "cc494897-dbe0-4745-9780-fc3a63cf80f0"
+          ],
+          "x": 2794.808253515625,
+          "y": 411.1504,
+          "direction": "bottom"
+        },
+        "constraintName": "fk_usuario_to_prestamo",
+        "visible": true,
+        "id": "fb49610a-9e19-4662-883f-7c3b6f8021e8"
+      },
+      {
+        "identification": true,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "6b34a3a9-7cde-4ada-94fd-8eee3c4a96e1",
+          "columnIds": [
+            "79d22c3a-d5aa-4233-8701-5e5bbd9f94a7"
+          ],
+          "x": 2600.983,
+          "y": 2762.5745,
+          "direction": "left"
+        },
+        "end": {
+          "tableId": "dbbad3da-862b-4537-a05b-4b26bcada98e",
+          "columnIds": [
+            "e682b507-cb5b-4f28-b0e6-a8cfe6aefed9"
+          ],
+          "x": 491.4834046875,
+          "y": 2747.557,
+          "direction": "right"
+        },
+        "constraintName": "fk_usuario_to_devolucion",
+        "visible": true,
+        "id": "46c65311-3d66-488c-9cc9-3fc7c6c56640"
+      },
+      {
+        "identification": true,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "10907074-33e3-41ea-b3c2-cba56311ae62",
+          "columnIds": [
+            "a12e1b02-3601-4209-b176-7be52eb4bb45",
+            "4081d698-00e6-429e-bc89-55e55aebd754",
+            "cc494897-dbe0-4745-9780-fc3a63cf80f0"
+          ],
+          "x": 2594.408351171875,
+          "y": 411.1504,
+          "direction": "bottom"
+        },
+        "end": {
+          "tableId": "35965100-281e-47ff-a1d2-68cbad5e30fd",
+          "columnIds": [
+            "8a4c18d0-ff78-4a07-87b5-1a13b032559a",
+            "aa824647-a67a-485a-82f4-4386c38970fa",
+            "4ed7afe7-ca47-4583-a1a7-233c7658841c"
+          ],
+          "x": 2455.18649296875,
+          "y": 932.5276,
+          "direction": "top"
+        },
+        "constraintName": "fk_prestamo_to_devuelto",
+        "visible": true,
+        "id": "37c8591e-499d-4419-8fd3-9e0e67dcd7c5"
+      },
+      {
+        "identification": true,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "2a2c14a6-f0e6-4799-b569-654abc3ef437",
+          "columnIds": [
+            "0827091c-17d8-4849-bcdb-0370a717cc3e",
+            "bde18038-3a3f-420e-be49-21f5e9a85473"
+          ],
+          "x": 1647.6107859375,
+          "y": 1045.2717,
+          "direction": "right"
+        },
+        "end": {
+          "tableId": "35965100-281e-47ff-a1d2-68cbad5e30fd",
+          "columnIds": [
+            "35efe43b-986e-475b-99b1-537ddd050205",
+            "07616715-1801-4571-ab61-b3eeb3ec2081"
+          ],
+          "x": 2247.4487,
+          "y": 1018.2776,
+          "direction": "left"
+        },
+        "constraintName": "fk_recurso_to_devuelto",
+        "visible": true,
+        "id": "1ff2b394-ebe7-4b13-847b-9de512a60e2f"
+      },
+      {
+        "identification": true,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "2a2c14a6-f0e6-4799-b569-654abc3ef437",
+          "columnIds": [
+            "0827091c-17d8-4849-bcdb-0370a717cc3e",
+            "bde18038-3a3f-420e-be49-21f5e9a85473"
+          ],
+          "x": 1232.1352,
+          "y": 1077.8967,
+          "direction": "left"
+        },
+        "end": {
+          "tableId": "028844aa-bc2f-492c-a68c-3e8bfe794c61",
+          "columnIds": [
+            "bde735a5-da51-47ec-933e-a1858aaa9a5b",
+            "12289ec3-5169-4def-a8e9-7f56b4a06189"
+          ],
+          "x": 1114.4039929687501,
+          "y": 1591.6355,
+          "direction": "top"
+        },
+        "constraintName": "fk_recurso_to_devolucionrecurso",
+        "visible": true,
+        "id": "0ee998a8-2b62-4168-81ed-745fd0d2e900"
+      },
+      {
+        "identification": true,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "dbbad3da-862b-4537-a05b-4b26bcada98e",
+          "columnIds": [
+            "25f47aeb-3d64-4a34-aa3c-e94c53cc6148",
+            "ce59dbd4-5a4a-4aa5-a952-89e7a79804fe",
+            "e682b507-cb5b-4f28-b0e6-a8cfe6aefed9"
+          ],
+          "x": 491.4834046875,
+          "y": 2661.807,
+          "direction": "right"
+        },
+        "end": {
+          "tableId": "028844aa-bc2f-492c-a68c-3e8bfe794c61",
+          "columnIds": [
+            "03ad5495-1dac-462c-96cf-a87a6dce6447",
+            "68a453a7-2d10-45b5-81ac-359666d63119",
+            "97ba9ec1-221a-4968-9269-3762845588ca"
+          ],
+          "x": 906.6662,
+          "y": 1677.3855,
+          "direction": "left"
+        },
+        "constraintName": "fk_devolucion_to_devolucionrecurso",
+        "visible": true,
+        "id": "2a26df3f-a651-4b74-973b-bd9cbc7e43e2"
+      },
+      {
+        "identification": false,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "4cc710d1-b2ff-42f8-9f4d-859184910c93",
+          "columnIds": [
+            "722734e9-c663-487a-a352-f8b056a5c3fe"
+          ],
+          "x": 1265.16640859375,
+          "y": 2107.9065,
+          "direction": "right"
+        },
+        "end": {
+          "tableId": "6f87b07f-1fa3-4b56-aac2-96bb18c862ba",
+          "columnIds": [
+            "1aad198f-dd8b-4d6f-b09d-fa6b6544d4be"
+          ],
+          "x": 1791.1216,
+          "y": 2116.057,
+          "direction": "left"
+        },
+        "constraintName": "fk_estado_to_reserva",
+        "visible": true,
+        "id": "1a94cbf1-553f-4306-846b-38688c14d2b2"
+      }
+    ]
+  }
+}

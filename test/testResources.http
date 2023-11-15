@@ -1,0 +1,7 @@
+### obtener todos los recursos
+GET  http://localhost:3000/resources
+
+### obtener por ids los recursoso
+GET  http://localhost:3000/resources/506?idTipo=Salon
+
+
