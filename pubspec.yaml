@@ -6,6 +6,7 @@ environment:
 
 dependencies:
   angel3_container: ^8.0.0
+  angel3_cors: ^8.0.0
   angel3_framework: ^8.0.0
   angel3_model: ^8.0.0
   angel3_production: ^8.0.0

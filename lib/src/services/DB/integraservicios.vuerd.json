@@ -3,9 +3,9 @@
     "version": "2.2.11",
     "width": 3000,
     "height": 3000,
-    "scrollTop": -419,
-    "scrollLeft": -941,
-    "zoomLevel": 1,
+    "scrollTop": -910,
+    "scrollLeft": -1081,
+    "zoomLevel": 0.9,
     "show": {
       "tableComment": true,
       "columnComment": true,
@@ -226,7 +226,7 @@
           {
             "name": "Descripcion",
             "comment": "",
-            "dataType": "varchar(50)",
+            "dataType": "varchar(80)",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -251,7 +251,7 @@
           "active": false,
           "left": 1232.1352,
           "top": 1012.6467,
-          "zIndex": 1,
+          "zIndex": 23,
           "widthName": 60,
           "widthComment": 60
         },
@@ -444,7 +444,7 @@
           "active": false,
           "left": 1285.8982,
           "top": 675.7394,
-          "zIndex": 3,
+          "zIndex": 16,
           "widthName": 82.44384765625,
           "widthComment": 60
         },
