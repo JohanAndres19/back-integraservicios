@@ -1,21 +1,49 @@
-import 'package:angel3_validate/angel3_validate.dart' ;
-
+import 'package:angel3_validate/angel3_validate.dart';
+import 'package:hello_angel/src/schemas/transform_date.dart';
 
 /**
  * Esquema de Reservas
  */
 
-var _validar = Validator({ 
-  'idUsuario*':[isString, isNonEmptyString, (id)=>id.length<=40],
-  'idRecurso*':[isString, isNonEmptyString ,(id)=>id.length<=40],
-  'idTipoR*':[isString, isNonEmptyString],
-  'fechaInicio*':[ isIso8601DateString, isNonEmptyString, (fecha)=>DateTime.parse(fecha).isAfter(DateTime.now())|| DateTime.parse(fecha)==(DateTime.now())], 
-  'fechaFin*':[ isIso8601DateString, isNonEmptyString , (fecha)=>DateTime.parse(fecha).isAfter(DateTime.now())|| DateTime.parse(fecha)==(DateTime.now())],
-  'idEstado*':[isString , isNonEmptyString , (Estado)=>['activo','reservado','prestado','devuelto'].contains(Estado)]
+var _calendario = Validator({
+  'fechaInicio*': [
+    isNonEmptyString,
+    isIso8601DateString,
+     (fechaInicio) {
+        return dateVerify(fechaInicio);
+    } 
+  ],
+  'fechaFin*': [
+    isNonEmptyString,
+    isIso8601DateString,
+     (fechaFin) {
+        return dateVerify(fechaFin);
+    }
+  ],
 });
 
-
-Future<ValidationResult> validateParamsBooking(Map<String, dynamic> params) async  {
-  return _validar.check(params);  
+bool dateVerify(String date) {
+  return dateParse(date).isAfter(dateNow()) || dateParse(date) == dateNow();
 }
 
+var _validar = Validator({
+  'idUsuario*': [isString, isNonEmptyString, maxLength(40)],
+  'idRecurso*': [isString, isNonEmptyString, maxLength(40)],
+  'idTipoR*': [
+    isString,
+    isNonEmptyString,
+    (idTipoR) => ['Salon', 'Laboratorio', 'Auditorio'].contains(idTipoR)
+  ],
+  'idEstado*': [
+    isString,
+    isNonEmptyString,
+    (idEstado) =>
+        ['activo', 'reservado', 'prestado', 'devuelto'].contains(idEstado)
+  ],
+  'calendarios*': [isList, everyElement(_calendario)],
+});
+
+Future<ValidationResult> validateParamsBooking(
+    Map<String, dynamic> params) async {
+  return _validar.check(params);
+}

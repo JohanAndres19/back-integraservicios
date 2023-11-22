@@ -1,7 +1,13 @@
 ### obtener todos los recursos
 GET  http://localhost:3000/resources
 
-### obtener por ids los recursoso
-GET  http://localhost:3000/resources/506?idTipo=Salon
+### obtener por ids los recursoso1 que existe 
+GET  http://localhost:3000/resources/byid?idRecurso=40&idTipoR=Salon
 
+### obtener por ids los recursoso2 que no existe
+GET  http://localhost:3000/resources/byid?idRecurso=500&idTipoR=Salon
+
+
+### obtener por ids los recursoso3 por un tipo no existente
+GET  http://localhost:3000/resources/byid?idRecurso=50&idTipoR=Piso
 

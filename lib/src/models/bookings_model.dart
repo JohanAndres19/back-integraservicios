@@ -1,5 +1,6 @@
 import 'package:hello_angel/src/models/calendar_model.dart';
 import 'package:hello_angel/src/schemas/bookings_schema.dart';
+import 'package:hello_angel/src/schemas/resource_schema.dart';
 import 'package:hello_angel/src/services/DB/connectionPost.dart';
 import 'package:uuid/uuid.dart';
 
@@ -9,7 +10,7 @@ import 'package:uuid/uuid.dart';
 
 class BookingModel {
 
-  static Future getAllBookings(PostgresConnection connection) async{
+  static Future getAllBookings(PostgresConnection connection) async {
     var result = await connection.query({
       'query': "SELECT * FROM reserva;",
       'params': {"": ""}
@@ -21,22 +22,26 @@ class BookingModel {
             "data": null
           }
         : {"status": 200, "message": "", "data": result["data"]};
+  }
 
-  } 
   static Future getBookingsByResource(
       PostgresConnection connection, var params) async {
-    var result = await connection.query({
-      'query':
-          "SELECT * FROM reserva where lower(idrecursopkfk) = lower(@idRecurso) and lower(idtiporecursopkfk) = lower(@idTipo) ;",
-      'params': params
-    });
-    return (result['error'] != null)
-        ? {
-            "status": 400,
-            "message": "Error al conectar con la base de datos",
-            "data": null
-          }
-        : {"status": 200, "message": "", "data": result["data"]};
+    var result = await validateParamsResource(params);
+    if (result.errors.isEmpty) {
+      var resultquery = await connection.query({
+        'query':
+            "SELECT * FROM reserva where lower(idrecursopkfk) = lower(@idRecurso) and lower(idtiporecursopkfk) = lower(@idTipoR) ;",
+        'params': result.data
+      });
+      return (resultquery['error'] != null)
+          ? {
+              "status": 400,
+              "message": "Error al conectar con la base de datos",
+              "data": null
+            }
+          : {"status": 200, "message": "", "data": resultquery["data"]};
+    }
+     return {"status": 400, "message": result.errors.toString(), "data": null};
   }
 
   static Future getBookingById(
@@ -86,35 +91,54 @@ class BookingModel {
         : {"status": 200, "message": "", "data": result["data"]};
   }
 
+  static Future getBookingByUserAndStatus(
+      PostgresConnection connection, var params) async {
+    var result = await connection.query({
+      'query':
+          "SELECT * FROM reserva where lower(idusuariopkfk) = lower(@idUsuario) and lower(idestado) = lower(@idEstado)",
+      'params': params
+    });
+    return (result['error'] != null)
+        ? {
+            "status": 400,
+            "message": "Error al conectar con la base de datos",
+            "data": null
+          }
+        : {"status": 200, "message": "", "data": result["data"]};
+  }
+
+
   static Future createBooking(PostgresConnection connection, var params) async {
     var result = await validateParamsBooking(params); // validar los datos
-    if (result.errors.isEmpty) {
-      // si no hay errores
-      var bookings = await BookingModel.getBookingByIdUser(connection, {
-        'idUsuario': result.data['idUsuario']
-      }); // buscar las reservas que tengan el mismo usuario
-      var bookingsActivo = (bookings['error'] == null)
-          ? bookings['data']
-              .where((element) => element['reserva']['idEstado'] == 'activo')
-              .length
-          : -1; // contar las reservas activas si no hay errores
-      if (bookingsActivo < 5 && bookingsActivo != -1) {
-        // si hay menos de 5 reservas activas se crea una reserva
-        result.data.addAll({'idReserva': Uuid().v1()});
-        var calendar = await CalendarModel.createCalendar(
-            connection, result.data); // crear el calendario
-        if (calendar['status'] == 201) {
+    if (result.errors.isEmpty) {// si no hay errores
+      var bookings = await BookingModel.getBookingByUserAndStatus(connection, {
+        'idUsuario': result.data['idUsuario'],
+        'idEstado': result.data['idEstado']
+      }); // buscar las reservas que tengan el mismo usuario activas
+      if (bookings['status'] == 200 && bookings['data'].length < 5) { // si hay menos de 5 reservas activas se crea una reserva
+        Map<String, dynamic> data ={};
+        result.data.forEach((key, value) {
+          data.addAll({key: value});
+        });
+        data.addAll({'idReserva': Uuid().v1()});
           // si no hay error se crea la reserva
-          await connection.query({
-            'query':
-                "INSERT INTO reserva VALUES (@idReserva,@idUsuario,@idRecurso,@idTipo,@fechaInicio,@fechaFin,@idEstado);",
-            'params': result.data
-          });
-          return {"status": 201, "message": "Se ha creado la reserva"};
+        var queryI=await connection.query({
+          'query':
+              "INSERT INTO reserva VALUES (@idReserva,@idUsuario,@idRecurso,@idTipoR,@idEstado);",
+          'params': data
+        });
+        if (queryI['error'] == null) { // si no hay error se crea el calendario
+          var calendar = await CalendarModel.createCalendar(
+          connection, data);
+          if (calendar['status'] == 400) {
+            await BookingModel.deleteBooking(connection, data);
+            return{"status": 400, "message": calendar['message'],data:[]};
+          }
+          return {"status": 201, "message": "Se ha creado la reserva" ,"data":[]};
         }
-        return {'status': 400, 'message': calendar['message']};
+        
       }
-      return (bookingsActivo == -1)
+      return (bookings['errors'] != null)
           ? {"status": 400, "message": "Error al conectar con la base de datos"}
           : {
               "status": 400,
@@ -123,4 +147,19 @@ class BookingModel {
     }
     return {"status": 400, "message": result.errors.toString()};
   }
+
+  static Future deleteBooking(PostgresConnection connection, var params) async {
+    var result = await connection.query({
+      'query': "DELETE FROM reserva where lower(idreserva) = lower(@idReserva)",
+      'params': params
+    });
+    return (result['error'] != null)
+        ? {
+            "status": 400,
+            "message": "Error al conectar con la base de datos",
+            "data": null
+          }
+        : {"status": 200, "message": "", "data": result["data"]};
+  }
+  
 }

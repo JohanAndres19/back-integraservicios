@@ -1,4 +1,91 @@
 ### obtener todas las reservas
+GET  http://localhost:3000/bookings
+### obtener las reservas por id del recurso
+GET  http://localhost:3000/bookings/idresource?idRecurso=773&idTipoR=Auditorio
+### obtener las reservas por id del usuario
+GET  http://localhost:3000/bookings/iduser/20181020072
 
-### obtener las reservas por id 
-#### obtener las reservas por id de usuario
+### crear una nueva reserva
+POST  http://localhost:3000/bookings
+Content-Type: application/json
+
+{
+  "idRecurso": "655",
+  "idTipoR": "Laboratorio",
+  "idUsuario": "20181020072",
+  "idEstado": "activo",
+  "calendarios": [
+    {
+      "fechaInicio":"2023-11-22 10:00:00",
+      "fechaFin": "2023-11-22 12:00:00"
+    },
+    {
+      "fechaInicio":"2023-11-22 14:00:00",
+      "fechaFin": "2023-11-22 16:00:00"
+    }
+  ]
+}
+
+### crear segunda reserva
+POST  http://localhost:3000/bookings
+Content-Type: application/json
+
+{
+  "idRecurso": "655",
+  "idTipoR": "Laboratorio",
+  "idUsuario": "20181020072",
+  "idEstado": "activo",
+  "calendarios": [
+    {
+      "fechaInicio":"2023-11-23 10:00:00",
+      "fechaFin": "2023-11-23 12:00:00"
+    },
+    {
+      "fechaInicio":"2023-11-23 14:00:00",
+      "fechaFin": "2023-11-23 16:00:00"
+    }
+  ]
+}
+
+### prueba cruce reserva
+POST  http://localhost:3000/bookings
+Content-Type: application/json
+
+{
+  "idRecurso": "655",
+  "idTipoR": "Laboratorio",
+  "idUsuario": "20181020072",
+  "idEstado": "activo",
+  "calendarios": [
+    {
+      "fechaInicio":"2023-11-23 10:00:00",
+      "fechaFin": "2023-11-23 12:00:00"
+    },
+    {
+      "fechaInicio":"2023-11-23 14:00:00",
+      "fechaFin": "2023-11-23 16:00:00"
+    }
+  ]
+}
+
+### prueba formato reserva
+
+POST  http://localhost:3000/bookings
+Content-Type: application/json
+
+{
+  "idRecurso": "773",
+  "idTipoR": "Auditorio",
+  "idUsuario": "20181020072",
+  "idEstado": "activo",
+  "calendarios": [
+    {
+      "fechaInicio":"2023-11-23 10:00:00",
+      "fechaFin": "2023-11-23 12:00:00"
+    },
+    {
+      "fechaInicio":"2023-11-23 14:00:00",
+      "fechaFin": "2023-11-23 16:00:00"
+    }
+  ]
+}

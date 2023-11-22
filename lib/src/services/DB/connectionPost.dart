@@ -8,7 +8,7 @@ class PostgresConnection {
       final connect = PostgreSQLConnection(
         'ep-cold-recipe-00887370.us-east-1.aws.neon.tech', // dirección del servidor PostgreSQL
         5432, // puerto del servidor PostgreSQL
-        'johan-integra', // nombre de la base de datos
+        'neon-integra', // nombre de la base de datos
         username: 'JohanAndres19', // nombre de usuario
         password: 'rxv2EHS5Tjyk', // contraseña
         useSSL: true,
@@ -20,7 +20,7 @@ class PostgresConnection {
         await connect.close();
         return {"data":data,"error":null};
       } catch (e) {
-        print("Ouch fallo la conexion con la base de datos");
+        print("Ouch fallo la conexion con la base de datos ${e.toString()}");
         return {"data":null,"error":e.toString()};
       }
   }

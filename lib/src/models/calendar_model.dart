@@ -1,42 +1,71 @@
-import 'package:hello_angel/src/schemas/calendar_schema.dart';
+import 'package:hello_angel/src/schemas/resource_schema.dart';
 import 'package:hello_angel/src/services/DB/connectionPost.dart';
 import 'package:uuid/uuid.dart';
 
 class CalendarModel {
-  
-  static Future getCalendarResourceByDate(PostgresConnection connection ,var params ) async{
-    var result= await connection.query({
-      'query':"SELECT * FROM calendario where lower(idrecursopkfk) = lower(@idRecurso) and lower(idtiporecursopkfk) = lower(@idTipo) and fechainicio= @fechaI and fechafinal = @fechaF;" ,
+  static Future getCalendarByResource(
+      PostgresConnection connection, var params) async {
+    var result = await validateParamsResource(params);
+    if (result.errors.isEmpty) {
+      var resultquery = await connection.query({
+        'query':
+            "SELECT * FROM calendario where lower(idrecursopkfk) = lower(@idRecurso) and lower(idtiporecursopkfk) = lower(@idTipo)",
+        'params': result.data
+      });
+      return (resultquery['error'] != null)
+          ? {
+              "status": 400,
+              "message":
+                  "Error al conectar con la base de datos ${resultquery['error']}",
+              "data": null
+            }
+          : {"status": 200, "data": resultquery["data"], "message": ""};
+    }
+    return {"status": 400, "message": result.errors.toString(), "data": null};
+  }
+
+  static Future getCalendarResourceByDate(
+      PostgresConnection connection, var params) async {
+    var result = await connection.query({
+      'query':
+          "SELECT * FROM calendario where lower(idrecursopkfk) = lower(@idRecurso) and lower(idtiporecursopkfk) = lower(@idTipoR) and fechainicio= @fechaI and fechafinal = @fechaF;",
       'params': params
     });
-    return (result['error'] !=null)?{"status":400, "message":"Error al conectar con la base de datos"}: {"status": 200, "data": result["data"]};
+    return (result['error'] != null)
+        ? {"status": 400, "message": "Error al conectar con la base de datos", "data":[]}
+        : {"status": 200,"message": "", "data": result["data"]};
   }
 
-
-  static Future createCalendar(PostgresConnection connection, var params) async{
-      var result = await validateParamsCalendar(params);
-      if (result.errors.isEmpty) {
-        var resultCrossing =
-            await CalendarModel.getCalendarResourceByDate(connection, { // buscar el calendario del recurso
-          'idRecurso': result.data['idRecurso'],
-          'idTipo': result.data['idTipoR'],
-          'fechaI': result.data['fechaInicio'],
-          'fechaF': result.data['fechaFin'],
+  static Future createCalendar(
+      PostgresConnection connection, var params) async {
+    for (var i in params['calendarios']) {
+      var resultCruce = await CalendarModel.getCalendarResourceByDate(connection, {
+        'idRecurso': params['idRecurso'],
+        'idTipoR': params['idTipoR'],
+        'fechaI': i['fechaInicio'],
+        'fechaF': i['fechaFin'],
+      });
+      if (resultCruce['status'] != 400 &&
+          resultCruce['data'].length ==0) {
+        await connection.query({
+          'query':
+              "INSERT INTO calendario VALUES (@idCalendario,@fechaI,@fechaF,@idReserva, @idUsuario, @idRecurso, @idTipoR)",
+          'params': {
+            'idCalendario': Uuid().v1(),
+            'idReserva': params['idReserva'],
+            'idUsuario': params['idUsuario'],
+            'idRecurso': params['idRecurso'],
+            'idTipoR': params['idTipoR'],
+            'fechaI': i['fechaInicio'],
+            'fechaF': i['fechaFin'],
+          }
         });
-        if (resultCrossing.isEmpty) { // si no hay cruse se crea
-          result.data.addAll({'idCalendario': Uuid().v1()});
-          await connection.query({
-            'query': "INSERT INTO calendario VALUES (@idCalendario,@fechaI, @fechaF,@idReserva,@idUsuario,@idRecurso,@idTipo );",
-            'params': result.data
-          });
-          return {"status": 201 , "message": "Se ha creado el calendario"};
-        }
-        return {"status": 400 , "message": "Presenta cruce de fechas con este recurso"};
+      }else{
+        return (resultCruce['status'] == 400) ? {"status": 400, "message": "Error al conectar con la base de datos", "data":[]} : {"status": 400, "message": "Presenta cruce en la fecha seleccionada ", "data": []};
       }
-      return {"status": 400 , "message": result.errors.toString()};
+    }
+    return {"status": 201, "message": "Se ha creado el calendario", "data": []};
   }
 
   
-
-
 }
