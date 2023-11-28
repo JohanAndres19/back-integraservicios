@@ -28,7 +28,7 @@ class CalendarModel {
       PostgresConnection connection, var params) async {
     var result = await connection.query({
       'query':
-          "SELECT to_char(fechaInicio,'YYYY-MM-DD HH24:MI:SS') as Fi, to_char(fechaFinal,'YYYY-MM-DD HH24:MI:SS') as Ff  FROM calendario where lower(idreservapkfk) = lower(@idReserva)",
+          "SELECT to_char(fechaInicio,'YYYY-MM-DD HH24:MI:SS') as Fi, to_char(fechaFinal,'YYYY-MM-DD HH24:MI:SS') as Ff FROM calendario ca where lower(ca.idreservapkfk) = lower(@idReserva)",
       'params': params
     });
     return (result['error'] != null)

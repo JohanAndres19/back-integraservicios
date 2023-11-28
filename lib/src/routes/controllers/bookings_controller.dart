@@ -57,7 +57,7 @@ class BookingController extends Controller {
     var data = await CalendarModel.getCalendarByBookings(
         req.container!.make<PostgresConnection>(), req.params);
     res.statusCode = data['status'];
-    res.json({'message': data['message'], 'data': data['data']});
+    res.json({'message': data['message'], 'data': List.from(data['data']).map((e) => e[""]).toList()});
   }
 
 
