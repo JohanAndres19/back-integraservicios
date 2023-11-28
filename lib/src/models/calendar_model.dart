@@ -24,6 +24,22 @@ class CalendarModel {
     return {"status": 400, "message": result.errors.toString(), "data": null};
   }
 
+  static Future getCalendarByBookings(
+      PostgresConnection connection, var params) async {
+    var result = await connection.query({
+      'query':
+          "SELECT to_char(fechaInicio,'YYYY-MM-DD HH24:MI:SS') as Fi, to_char(fechaFinal,'YYYY-MM-DD HH24:MI:SS') as Ff  FROM calendario where lower(idreservapkfk) = lower(@idReserva)",
+      'params': params
+    });
+    return (result['error'] != null)
+        ? {
+            "status": 400,
+            "message": "Error al conectar con la base de datos",
+            "data": []
+          }
+        : {"status": 200, "message": "", "data": result["data"]};
+  }
+
   static Future getCalendarResourceByDate(
       PostgresConnection connection, var params) async {
     var result = await connection.query({
@@ -32,21 +48,25 @@ class CalendarModel {
       'params': params
     });
     return (result['error'] != null)
-        ? {"status": 400, "message": "Error al conectar con la base de datos", "data":[]}
-        : {"status": 200,"message": "", "data": result["data"]};
+        ? {
+            "status": 400,
+            "message": "Error al conectar con la base de datos",
+            "data": []
+          }
+        : {"status": 200, "message": "", "data": result["data"]};
   }
 
   static Future createCalendar(
       PostgresConnection connection, var params) async {
     for (var i in params['calendarios']) {
-      var resultCruce = await CalendarModel.getCalendarResourceByDate(connection, {
+      var resultCruce =
+          await CalendarModel.getCalendarResourceByDate(connection, {
         'idRecurso': params['idRecurso'],
         'idTipoR': params['idTipoR'],
         'fechaI': i['fechaInicio'],
         'fechaF': i['fechaFin'],
       });
-      if (resultCruce['status'] != 400 &&
-          resultCruce['data'].length ==0) {
+      if (resultCruce['status'] != 400 && resultCruce['data'].length == 0) {
         await connection.query({
           'query':
               "INSERT INTO calendario VALUES (@idCalendario,@fechaI,@fechaF,@idReserva, @idUsuario, @idRecurso, @idTipoR)",
@@ -60,12 +80,60 @@ class CalendarModel {
             'fechaF': i['fechaFin'],
           }
         });
-      }else{
-        return (resultCruce['status'] == 400) ? {"status": 400, "message": "Error al conectar con la base de datos", "data":[]} : {"status": 400, "message": "Presenta cruce en la fecha seleccionada ", "data": []};
+      } else {
+        return (resultCruce['status'] == 400)
+            ? {
+                "status": 400,
+                "message": "Error al conectar con la base de datos",
+                "data": []
+              }
+            : {
+                "status": 400,
+                "message": "Presenta cruce en la fecha seleccionada ",
+                "data": []
+              };
       }
     }
     return {"status": 201, "message": "Se ha creado el calendario", "data": []};
   }
 
-  
+  static Future deleteCalendarByBookings(
+      PostgresConnection connection, var params) async {
+    var result = await connection.query({
+      'query':
+          "Delete from calendario where lower(idreserva) = lower(@idReserva)",
+      'params': params
+    });
+    return (result['error'] != null)
+        ? {
+            "status": 400,
+            "message": "Error al conectar con la base de datos",
+            "data": []
+          }
+        : {
+            "status": 200,
+            "message": "Se ha eliminado el calendario",
+            "data": []
+          };
+  }
+
+  static Future deleteCalendarById(
+      PostgresConnection connection, var params) async {
+    var result = await connection.query({
+      'query':
+          "Delete from calendario where lower(idcalendario) = lower(@idCalendario)",
+      'params': params
+    });
+    return (result['error'] != null)
+        ? {
+            "status": 400,
+            "message": "Error al conectar con la base de datos",
+            "data": []
+          }
+        : {
+            "status": 200,
+            "message": "Se ha eliminado el calendario",
+            "data": []
+          };
+  }
 }

@@ -5,6 +5,10 @@ GET  http://localhost:3000/bookings/idresource?idRecurso=773&idTipoR=Auditorio
 ### obtener las reservas por id del usuario
 GET  http://localhost:3000/bookings/iduser/20181020072
 
+### ontener calendario de una reserva
+GET  http://localhost:3000/bookings/calendar/034511a0-5e7d-1db4-af51-29621c5388c7
+x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIwMTgxMDIwMDcyIiwiaWF0IjoxNzAxMjAwNjk5LCJleHAiOjE3MDEyMDI0OTl9.ybhAvRSNZY45tOnZ1giwjC70I_nzCKpiRqqD8msOYtU
+
 ### crear una nueva reserva
 POST  http://localhost:3000/bookings
 Content-Type: application/json
@@ -89,3 +93,8 @@ Content-Type: application/json
     }
   ]
 }
+
+### obtener  reserva por usuario y estado 
+
+GET  http://localhost:3000/bookings/userstate?idUsuario=20181020072&idEstado=activo
+x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIwMTgxMDIwMDcyIiwiaWF0IjoxNzAxMjAwNjk5LCJleHAiOjE3MDEyMDI0OTl9.ybhAvRSNZY45tOnZ1giwjC70I_nzCKpiRqqD8msOYtU

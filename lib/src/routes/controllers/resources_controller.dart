@@ -1,12 +1,13 @@
 import 'package:angel3_framework/angel3_framework.dart';
 import 'package:hello_angel/src/models/resources_model.dart';
 import 'package:hello_angel/src/services/DB/connectionPost.dart';
+import 'package:hello_angel/src/services/auth/signin.dart';
 
 /**
  * Controlador de Recursos
 */
 
-@Expose('/resources')
+@Expose('/resources', middleware: const [verifyToken])
 class ResourcesController extends Controller {
   @Expose('/')
   Future getAllResources(RequestContext req, ResponseContext res) async {

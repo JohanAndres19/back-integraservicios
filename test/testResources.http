@@ -1,13 +1,25 @@
 ### obtener todos los recursos
 GET  http://localhost:3000/resources
+Content-Type: application/json
+x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIwMTgxMDIwMDY0IiwiaWF0IjoxNzAxMTUwMjU4LCJleHAiOjE3MDExNTIwNTh9.4i4DFxiOE29HMoccC1wkbbJiTEC66cIByTf3LhsccNM
 
 ### obtener por ids los recursoso1 que existe 
 GET  http://localhost:3000/resources/byid?idRecurso=40&idTipoR=Salon
+x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIwMTgxMDIwMDY0IiwiaWF0IjoxNzAxMTUwMjU4LCJleHAiOjE3MDExNTIwNTh9.4i4DFxiOE29HMoccC1wkbbJiTEC66cIByTf3LhsccNM
+
 
 ### obtener por ids los recursoso2 que no existe
 GET  http://localhost:3000/resources/byid?idRecurso=500&idTipoR=Salon
+x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIwMTgxMDIwMDY0IiwiaWF0IjoxNzAxMTUwMjU4LCJleHAiOjE3MDExNTIwNTh9.4i4DFxiOE29HMoccC1wkbbJiTEC66cIByTf3LhsccNM
 
 
 ### obtener por ids los recursoso3 por un tipo no existente
 GET  http://localhost:3000/resources/byid?idRecurso=50&idTipoR=Piso
+x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIwMTgxMDIwMDY0IiwiaWF0IjoxNzAxMTUwMjU4LCJleHAiOjE3MDExNTIwNTh9.4i4DFxiOE29HMoccC1wkbbJiTEC66cIByTf3LhsccNM
 
+### prueba servicio render
+
+GET  https://back-project-johan.onrender.com/resources
+
+### prueba servicio render id recurso
+GET  https://back-project-johan.onrender.com/resources/byid?idRecurso=40&idTipoR=Salon

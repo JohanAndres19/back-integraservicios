@@ -1,0 +1,25 @@
+### login user
+POST  http://localhost:3000/user/signin
+Content-Type: application/json
+
+{
+    "idUsuario": "20181020072",
+    "password": "johan12345"
+}
+
+### login user datos erroneos 
+POST  http://localhost:3000/user/signin
+Content-Type: application/json
+
+{
+    "idUsuario": "20181020064_",
+    "passwords": "jonathan12345"
+}
+### login user que no existe
+POST  http://localhost:3000/user/signin
+Content-Type: application/json
+
+{
+    "idUsuario": "20181020075",
+    "password": "jonathan12345"
+}

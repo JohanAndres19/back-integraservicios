@@ -21,7 +21,7 @@ DateTime dateStart(String date) {
   return dateParse(date);
 }
 
-DateTime dateEND(String date) {
+DateTime dateEnd(String date) {
   tz.initializeTimeZones();
   return dateParse(date);
 }

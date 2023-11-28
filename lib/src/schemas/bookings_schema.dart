@@ -38,7 +38,7 @@ var _validar = Validator({
     isString,
     isNonEmptyString,
     (idEstado) =>
-        ['activo', 'reservado', 'prestado', 'devuelto'].contains(idEstado)
+        ['activo', 'cancelado', 'prestado', 'devuelto'].contains(idEstado)
   ],
   'calendarios*': [isList, everyElement(_calendario)],
 });
