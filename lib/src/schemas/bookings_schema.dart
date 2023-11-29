@@ -5,6 +5,7 @@ import 'package:hello_angel/src/schemas/transform_date.dart';
  * Esquema de Reservas
  */
 
+// validador crear recurso
 var _calendario = Validator({
   'fechaInicio*': [
     isNonEmptyString,
@@ -47,3 +48,17 @@ Future<ValidationResult> validateParamsBooking(
     Map<String, dynamic> params) async {
   return _validar.check(params);
 }
+//############################################################
+//############################################################
+//############################################################
+// validadro elimianr reserva
+var _deleteValidator =Validator({
+  'idReserva*': [isString, isNonEmptyString, maxLength(40)],
+});
+
+
+Future<ValidationResult> validateParamsDeleteBooking(
+    Map<String, dynamic> params) async {
+  return _deleteValidator.check(params);
+}
+

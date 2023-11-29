@@ -7,7 +7,7 @@ import 'package:hello_angel/src/services/auth/signin.dart';
 /**
  * Controlador de  endpoint Reservas
  */
-@Expose('/bookings',middleware: const[verifyToken])
+@Expose('/bookings', middleware: const [verifyToken])
 class BookingController extends Controller {
   // metodos get de las reservas
   @Expose('/', method: 'GET')
@@ -43,13 +43,14 @@ class BookingController extends Controller {
     res.statusCode = data['status'];
     res.json({'message': data['message'], 'data': data['data']});
   }
+
   @Expose('/userstate', method: 'GET')
-  Future getBookingsByUserAndState(RequestContext req , ResponseContext res) async{
+  Future getBookingsByUserAndState(
+      RequestContext req, ResponseContext res) async {
     var data = await BookingModel.getBookingByUserAndStatus(
-      req.container!.make<PostgresConnection>(),req.queryParameters
-    );
+        req.container!.make<PostgresConnection>(), req.queryParameters);
     res.statusCode = data['status'];
-    res.json({'message':data['message'],'data':data['data']});
+    res.json({'message': data['message'], 'data': data['data']});
   }
 
   @Expose('/calendar/:idReserva', method: 'GET')
@@ -57,9 +58,11 @@ class BookingController extends Controller {
     var data = await CalendarModel.getCalendarByBookings(
         req.container!.make<PostgresConnection>(), req.params);
     res.statusCode = data['status'];
-    res.json({'message': data['message'], 'data': List.from(data['data']).map((e) => e[""]).toList()});
+    res.json({
+      'message': data['message'],
+      'data': List.from(data['data']).map((e) => e[""]).toList()
+    });
   }
-
 
   @Expose('/calendarbyresource', method: 'GET')
   Future getCalendarByResource(RequestContext req, ResponseContext res) async {
@@ -79,7 +82,7 @@ class BookingController extends Controller {
     var data = await BookingModel.createBooking(
         req.container!.make<PostgresConnection>(), req.bodyAsMap);
     res.statusCode = data['status'];
-    res.json({'message': data['message'] , 'data': data['data']});
+    res.json({'message': data['message'], 'data': data['data']});
   }
 
   // metodos patch de las reservas
@@ -89,6 +92,17 @@ class BookingController extends Controller {
     var data = await BookingModel.updateStateBooking(
         req.container!.make<PostgresConnection>(), req.bodyAsMap);
     res.statusCode = data['status'];
-    res.json({'message': data['message'], 'data': data['data']}); 
+    res.json({'message': data['message'], 'data': data['data']});
+  }
+
+  @Expose('/deletebooking', method: 'DELETE')
+  Future deleteBooking(RequestContext req, ResponseContext res) async {
+    await req.parseBody();
+    var data = await BookingModel.deleteBooking(
+      req.container!.make<PostgresConnection>(),
+      req.bodyAsMap
+    );
+    res.statusCode = data['status'];
+    res.json({'message': data['message'], 'data': data['data']});
   }
 }

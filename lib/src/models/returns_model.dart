@@ -63,7 +63,7 @@ class ReturnsModel {
   }
 
   static Future createLoans(PostgresConnection connection, var params) async {
-    var result = validateParamsReturns(params);
+    var result = await validateParamsReturns(params);
     if (result.errors.isEmpty) {
       var devolucion = {'iddevolucion': Uuid().v1(), ...result.data};
       var resultquery = await connection.query({

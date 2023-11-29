@@ -140,7 +140,11 @@ class BookingModel {
             "data": []
           };
         }
-        return {"status": 400, "message": "Error al crear la reserva", "data": []};
+        return {
+          "status": 400,
+          "message": "Error al crear la reserva",
+          "data": []
+        };
       }
       return (bookings['errors'] != null)
           ? {"status": 400, "message": "Error al conectar con la base de datos"}
@@ -154,32 +158,50 @@ class BookingModel {
   }
 
   static Future deleteBooking(PostgresConnection connection, var params) async {
-    var resultCalendar =
-        await CalendarModel.deleteCalendarByBookings(connection, params);
-    if (resultCalendar['status'] == 200) {
-      var result = await connection.query({
-        'query':
-            "DELETE FROM reserva where lower(idreserva) = lower(@idReserva)",
-        'params': params
-      });
-      return (result['error'] != null)
-          ? {
-              "status": 400,
-              "message": "Error al conectar con la base de datos",
-              "data": null
-            }
-          : {
-              "status": 200,
-              "message": "Se borro la reserva",
-              "data": result["data"]
-            };
+    var validate = await validateParamsDeleteBooking(params);
+    if (validate.errors.isEmpty) {
+      var resultCalendar =
+          await CalendarModel.deleteCalendarByBookings(connection, validate.data);
+      if (resultCalendar['status'] == 200) {
+        var result = await connection.query({
+          'query':
+              "DELETE FROM reserva where lower(idreserva) = lower(@idReserva)",
+          'params': validate.data
+        });
+        return (result['error'] != null)
+            ? {
+                "status": 400,
+                "message": "Error al conectar con la base de datos",
+                "data": null
+              }
+            : {
+                "status": 200,
+                "message": "Se borro la reserva",
+                "data": result["data"]
+              };
+      }
+      return {"status": 400, "message": resultCalendar['message'], "data": []};
     }
-    return {"status": 400, "message": resultCalendar['message'], "data": []};
+    return {"status": 400, "message": validate.errors.toString(), "data": []};
   }
 
-  static Future updateStateBooking(PostgresConnection connection, var params) async {
+  static Future updateStateBooking(
+      PostgresConnection connection, var params) async {
     var result = await connection.query({
-      'query': "Update reserva set idestado = @idEstado where lower(idreserva) = lower(@idReserva)",
+      'query':
+          "Update reserva set idestado = @idEstado where lower(idreserva) = lower(@idReserva)",
+      'params': params
     });
+    return (result['error'] != null)
+        ? {
+            "status": 400,
+            "message": "Error al conectar con la base de datos",
+            "data": []
+          }
+        : {
+            "status": 200,
+            "message": "Se actualizo el estado de la reserva",
+            "data": result["data"]
+          };
   }
 }

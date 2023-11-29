@@ -5,7 +5,7 @@ import 'package:hello_angel/src/schemas/transform_date.dart';
  * Esquema de Prestamos
  */
 
-ValidationResult validateParamsLoans(Map<String, dynamic> params) {
+Future<ValidationResult> validateParamsLoans(Map<String, dynamic> params) async {
   var _validar = Validator({
     'idEmpleado*': [
       isString,

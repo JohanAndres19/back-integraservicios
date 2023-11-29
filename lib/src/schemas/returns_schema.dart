@@ -5,7 +5,7 @@ import 'package:hello_angel/src/schemas/transform_date.dart';
 * Esquema de Devoluciones
 */
 
-ValidationResult validateParamsReturns(Map<String, dynamic> params) {
+Future <ValidationResult> validateParamsReturns(Map<String, dynamic> params) async{
   var _validar = Validator({
     'idEmpleado*': [isString, isNonEmptyString, maxLength(40)],
     'idUsuario*': [isString, isNonEmptyString, maxLength(40)],

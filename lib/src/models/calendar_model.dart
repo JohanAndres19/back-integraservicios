@@ -101,7 +101,7 @@ class CalendarModel {
       PostgresConnection connection, var params) async {
     var result = await connection.query({
       'query':
-          "Delete from calendario where lower(idreserva) = lower(@idReserva)",
+          "Delete from calendario where lower(idreservapkfk) = lower(@idReserva)",
       'params': params
     });
     return (result['error'] != null)

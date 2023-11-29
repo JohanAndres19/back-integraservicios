@@ -12,6 +12,6 @@ var _validator = Validator({
   'idUsuario': 'Deben solo ser digitos la contraseña'
 });
 
-ValidationResult validateParamsUser(Map<String, dynamic> params) {
+Future<ValidationResult> validateParamsUser(Map<String, dynamic> params) async{
   return _validator.check(params);
 }

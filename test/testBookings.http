@@ -97,3 +97,22 @@ Content-Type: application/json
 
 GET  http://localhost:3000/bookings/userstate?idUsuario=20181020072&idEstado=activo
 x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIwMTgxMDIwMDcyIiwiaWF0IjoxNzAxMjAwNjk5LCJleHAiOjE3MDEyMDI0OTl9.ybhAvRSNZY45tOnZ1giwjC70I_nzCKpiRqqD8msOYtU
+
+### cancelar reserva
+PATCH   http://localhost:3000/bookings/updatestate
+Content-Type: application/json
+x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIwMTgxMDIwMDcyIiwiaWF0IjoxNzAxMjI5NTk1LCJleHAiOjE3MDEyMzEzOTV9.Q0emWaBfLcs_3QEyCRFqQC_Cy_ElQV5LccJwGTuqozY
+
+{
+  "idReserva": "bbdea870-4667-1dc9-9198-4111463f925c",
+  "idEstado": "cancelado"
+}
+
+### Delete reserva
+DELETE  http://localhost:3000/bookings/deletebooking
+Content-Type: application/json
+x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIwMTgxMDIwMDcyIiwiaWF0IjoxNzAxMjMxNzgxLCJleHAiOjE3MDEyMzM1ODF9.wJZntdyeJfO7bjkXjlsmnBzCZ8AyVFjD14N5j4sS7cU
+
+{
+  "idReserva": "74b5ff00-e0a6-1dc9-b76f-b18b1acd0910"
+}

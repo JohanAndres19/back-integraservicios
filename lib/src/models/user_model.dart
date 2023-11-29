@@ -13,7 +13,7 @@ class UserModel {
     return (result['error'] != null)?{"status": 400, "message": "Error al conectar con la base de datos", "data": []}:{"status": 200, "message": ""};
   }
   static Future loginUser(PostgresConnection connection, var params) async {
-    var result = validateParamsUser(params);
+    var result = await validateParamsUser(params);
     if (result.errors.isEmpty) {
       var query = await connection.query({
         'query':"SELECT * FROM usuario where lower(idUsuario) = lower(@idUsuario) and lower(contraseña) = lower(@password)",
