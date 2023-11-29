@@ -44,7 +44,7 @@ class CalendarModel {
       PostgresConnection connection, var params) async {
     var result = await connection.query({
       'query':
-          "SELECT * FROM calendario where lower(idrecursopkfk) = lower(@idRecurso) and lower(idtiporecursopkfk) = lower(@idTipoR) and fechainicio= @fechaI and fechafinal = @fechaF;",
+          "SELECT * FROM calendario c, reserva r where lower(c.idrecursopkfk) = lower(@idRecurso) and lower(c.idtiporecursopkfk) = lower(@idTipoR) and fechainicio= @fechaI and fechafinal = @fechaF and lower(r.idreserva) = lower(@idReserva) and lower(r.idestado)='activo';",
       'params': params
     });
     return (result['error'] != null)
@@ -65,6 +65,7 @@ class CalendarModel {
         'idTipoR': params['idTipoR'],
         'fechaI': i['fechaInicio'],
         'fechaF': i['fechaFin'],
+        'idReserva': params['idReserva'],
       });
       if (resultCruce['status'] != 400 && resultCruce['data'].length == 0) {
         await connection.query({
