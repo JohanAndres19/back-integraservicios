@@ -1,7 +1,8 @@
 ### obtener todas las reservas
 GET  http://localhost:3000/bookings
 ### obtener las reservas por id del recurso
-GET  http://localhost:3000/bookings/idresource?idRecurso=773&idTipoR=Auditorio
+GET  http://localhost:3000/bookings/idresource?idRecurso=386&idTipoR=Auditorio
+x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIwMTgxMDIwMDcyIiwiaWF0IjoxNzAxMjM5NTkyLCJleHAiOjE3MDEyNDEzOTJ9.Z529EAof0hku0xJgio06Euwp4tT9GSwT_kV38v57XUI
 ### obtener las reservas por id del usuario
 GET  http://localhost:3000/bookings/iduser/20181020072
 
@@ -11,20 +12,17 @@ x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIwMTgxMDIwMDcyIiwi
 ### crear una nueva reserva
 POST  http://localhost:3000/bookings
 Content-Type: application/json
+x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIwMTgxMDIwMDcyIiwiaWF0IjoxNzAxMjM5NTkyLCJleHAiOjE3MDEyNDEzOTJ9.Z529EAof0hku0xJgio06Euwp4tT9GSwT_kV38v57XUI
 
 {
-  "idRecurso": "655",
-  "idTipoR": "Laboratorio",
-  "idUsuario": "20181020072",
+  "idRecurso": "386",
+  "idTipoR": "Auditorio",
+  "idUsuario": "20181020064",
   "idEstado": "activo",
   "calendarios": [
     {
-      "fechaInicio":"2023-11-22 10:00:00",
-      "fechaFin": "2023-11-22 12:00:00"
-    },
-    {
-      "fechaInicio":"2023-11-22 14:00:00",
-      "fechaFin": "2023-11-22 16:00:00"
+      "fechaInicio":"2024-01-15 12:00:00",
+      "fechaFin": "2024-01-15 14:00:00"
     }
   ]
 }

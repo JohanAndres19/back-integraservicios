@@ -44,9 +44,10 @@ class CalendarModel {
       PostgresConnection connection, var params) async {
     var result = await connection.query({
       'query':
-          "SELECT * FROM calendario c, reserva r where lower(c.idrecursopkfk) = lower(@idRecurso) and lower(c.idtiporecursopkfk) = lower(@idTipoR) and fechainicio= @fechaI and fechafinal = @fechaF and lower(r.idreserva) = lower(@idReserva) and lower(r.idestado)='activo';",
+          "SELECT * FROM calendario c, reserva r where lower(c.idrecursopkfk) = lower(@idRecurso) and lower(c.idtiporecursopkfk) = lower(@idTipoR) and fechainicio= @fechaI and fechafinal = @fechaF and lower(r.idreserva) = lower(c.idreservapkfk) and lower(r.idestado)= lower('Activo') ;",
       'params': params
     });
+    print("esto son los datos de la consulta de calendario para el cruce${result["data"]}");
     return (result['error'] != null)
         ? {
             "status": 400,
@@ -65,8 +66,8 @@ class CalendarModel {
         'idTipoR': params['idTipoR'],
         'fechaI': i['fechaInicio'],
         'fechaF': i['fechaFin'],
-        'idReserva': params['idReserva'],
       });
+
       if (resultCruce['status'] != 400 && resultCruce['data'].length == 0) {
         await connection.query({
           'query':

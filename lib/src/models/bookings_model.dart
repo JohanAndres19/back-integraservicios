@@ -147,11 +147,15 @@ class BookingModel {
         };
       }
       return (bookings['errors'] != null)
-          ? {"status": 400, "message": "Error al conectar con la base de datos"}
+          ? {
+              "status": 400,
+              "message": "Error al conectar con la base de datos",
+              "data": []
+            }
           : {
               "status": 400,
-              "message": "Ya tiene el maximo de reservas activas"
-              //"data"
+              "message": "Ya tiene el maximo de reservas activas",
+              "data": []
             };
     }
     return {"status": 400, "message": result.errors.toString()};
@@ -160,8 +164,8 @@ class BookingModel {
   static Future deleteBooking(PostgresConnection connection, var params) async {
     var validate = await validateParamsDeleteBooking(params);
     if (validate.errors.isEmpty) {
-      var resultCalendar =
-          await CalendarModel.deleteCalendarByBookings(connection, validate.data);
+      var resultCalendar = await CalendarModel.deleteCalendarByBookings(
+          connection, validate.data);
       if (resultCalendar['status'] == 200) {
         var result = await connection.query({
           'query':
